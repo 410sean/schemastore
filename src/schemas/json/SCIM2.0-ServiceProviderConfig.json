@@ -1,0 +1,447 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig",
+    "type": "object",
+    "title": "Service Provider Configuration",
+    "description": "Schema for representing the service provider's configuration to enable discovery.",
+    "examples": [
+        {
+            "schemas": [
+                "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+            ],
+            "documentationUri": "http://example.com/help/scim.html",
+            "patch": {
+                "supported": true
+            },
+            "bulk": {
+                "supported": true,
+                "maxOperations": 1000,
+                "maxPayloadSize": 1048576
+            },
+            "filter": {
+                "supported": true,
+                "maxResults": 200
+            },
+            "changePassword": {
+                "supported": true
+            },
+            "sort": {
+                "supported": true
+            },
+            "etag": {
+                "supported": true
+            },
+            "authenticationSchemes": [
+                {
+                    "name": "OAuth Bearer Token",
+                    "description": "Authentication scheme using the OAuth Bearer Token Standard",
+                    "specUri": "http://www.rfc-editor.org/info/rfc6750",
+                    "documentationUri": "http://example.com/help/oauth.html",
+                    "type": "oauthbearertoken",
+                    "primary": true
+                },
+                {
+                    "name": "HTTP Basic",
+                    "description": "Authentication scheme using the HTTP Basic Standard",
+                    "specUri": "http://www.rfc-editor.org/info/rfc2617",
+                    "documentationUri": "http://example.com/help/httpBasic.html",
+                    "type": "httpbasic"
+                }
+            ],
+            "meta": {
+                "location": "https://example.com/v2/ServiceProviderConfig",
+                "resourceType": "ServiceProviderConfig",
+                "created": "2010-01-23T04:56:22Z",
+                "lastModified": "2011-05-13T04:42:34Z",
+                "version": "W/\"3694e05e9dff594\""
+            }
+        }
+    ],
+    "required": [
+        "schemas",
+        "documentationUri",
+        "patch",
+        "bulk",
+        "filter",
+        "changePassword",
+        "sort",
+        "etag",
+        "authenticationSchemes",
+        "meta"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "schemas": {
+            "$id": "#/properties/schemas",
+            "type": "array",
+            "examples": [
+                [
+                    "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "anyOf": [
+                    {
+                        "$id": "#/properties/schemas/items/anyOf/0",
+                        "type": "string",
+                        "examples": [
+                            "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+                        ],
+                        "enum":[ "urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"]
+                    }
+                ],
+                "$id": "#/properties/schemas/items"
+            }
+        },
+        "documentationUri": {
+            "$id": "#/properties/documentationUri",
+            "type": "string",
+            "description": "An HTTP-addressable URL pointing to the authentication scheme's usage documentation.",
+            "format":"uri",
+            "readOnly":true
+        },
+        "patch": {
+            "$id": "#/properties/patch",
+            "type": "object",
+            "readOnly": true,
+            "description": "A complex type that specifies PATCH configuration options. REQUIRED.  See Section 3.5.2 of [RFC7644].",
+            "examples": [
+                {
+                    "supported": true
+                }
+            ],
+            "required": [
+                "supported"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/patch/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not the operation is supported.  REQUIRED.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                }
+            }
+        },
+        "bulk": {
+            "$id": "#/properties/bulk",
+            "type": "object",
+            "description": "A complex type that specifies bulk configuration options.  See Section 3.7 of [RFC7644].  REQUIRED.",
+            "examples": [
+                {
+                    "supported": true,
+                    "maxOperations": 1000,
+                    "maxPayloadSize": 1048576
+                }
+            ],
+            "required": [
+                "supported",
+                "maxOperations",
+                "maxPayloadSize"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/bulk/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not the operation is supported.  REQUIRED.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "maxOperations": {
+                    "$id": "#/properties/bulk/properties/maxOperations",
+                    "type": "integer",
+                    "description": "An integer value specifying the maximum number of operations.  REQUIRED.",
+                    "default": 0,
+                    "examples": [
+                        1000
+                    ]
+                },
+                "maxPayloadSize": {
+                    "$id": "#/properties/bulk/properties/maxPayloadSize",
+                    "type": "integer",
+                    "description": "An integer value specifying the maximum payload size in bytes.  REQUIRED.",
+                    "default": 0,
+                    "examples": [
+                        1048576
+                    ]
+                }
+            }
+        },
+        "filter": {
+            "$id": "#/properties/filter",
+            "type": "object",
+            "description": "A complex type that specifies FILTER options.  REQUIRED.  See Section 3.4.2.2 of [RFC7644].",
+            "examples": [
+                {
+                    "supported": true,
+                    "maxResults": 200
+                }
+            ],
+            "required": [
+                "supported",
+                "maxResults"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/filter/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not the operation is supported.  REQUIRED.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "maxResults": {
+                    "$id": "#/properties/filter/properties/maxResults",
+                    "type": "integer",
+                    "description": "An integer value specifying the maximum number of resources returned in a response.  REQUIRED.",
+                    "default": 0,
+                    "examples": [
+                        200
+                    ]
+                }
+            }
+        },
+        "changePassword": {
+            "$id": "#/properties/changePassword",
+            "type": "object",
+            "description": "A complex type that specifies configuration options related to changing a password.  REQUIRED.",
+            "examples": [
+                {
+                    "supported": true
+                }
+            ],
+            "required": [
+                "supported"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/changePassword/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not the operation is supported.  REQUIRED.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                }
+            }
+        },
+        "sort": {
+            "$id": "#/properties/sort",
+            "type": "object",
+            "description": "A complex type that specifies Sort configuration options. REQUIRED.",
+            "examples": [
+                {
+                    "supported": true
+                }
+            ],
+            "required": [
+                "supported"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/sort/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not sorting is supported.  REQUIRED",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                }
+            }
+        },
+        "etag": {
+            "$id": "#/properties/etag",
+            "type": "object",
+            "description": "A complex type that specifies ETag configuration options. REQUIRED.",
+            "examples": [
+                {
+                    "supported": true
+                }
+            ],
+            "required": [
+                "supported"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "supported": {
+                    "$id": "#/properties/etag/properties/supported",
+                    "type": "boolean",
+                    "description": "A Boolean value specifying whether or not the operation is supported.  REQUIRED.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                }
+            }
+        },
+        "authenticationSchemes": {
+            "$id": "#/properties/authenticationSchemes",
+            "type": "array",
+            "title": "The authenticationSchemes schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "name": "OAuth Bearer Token",
+                        "description": "Authentication scheme using the OAuth Bearer Token Standard",
+                        "specUri": "http://www.rfc-editor.org/info/rfc6750",
+                        "documentationUri": "http://example.com/help/oauth.html",
+                        "type": "oauthbearertoken",
+                        "primary": true
+                    },
+                    {
+                        "name": "HTTP Basic",
+                        "description": "Authentication scheme using the HTTP Basic Standard",
+                        "specUri": "http://www.rfc-editor.org/info/rfc2617",
+                        "documentationUri": "http://example.com/help/httpBasic.html",
+                        "type": "httpbasic"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "anyOf": [
+                    {
+                        "$id": "#/properties/authenticationSchemes/items/anyOf/0",
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "description",
+                            "type"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                            "name": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/name",
+                                "type": "string",
+                                "description": "The common authentication scheme name, e.g., HTTP Basic. REQUIRED.",
+                                "examples": [
+                                    "OAuth Bearer Token"
+                                ]
+                            },
+                            "description": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/description",
+                                "type": "string",
+                                "description": "A description of the authentication scheme. REQUIRED.",
+                                "examples": [
+                                    "Authentication scheme using the OAuth Bearer Token Standard"
+                                ]
+                            },
+                            "specUri": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/specUri",
+                                "type": "string",
+                                "description": "An HTTP-addressable URL pointing to the authentication scheme's specification.  OPTIONAL.",
+                                "format":"uri",
+                                "examples": [
+                                    "http://www.rfc-editor.org/info/rfc6750"
+                                ]
+                            },
+                            "documentationUri": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/documentationUri",
+                                "type": "string",
+                                "description": "An HTTP-addressable URL pointing to the authentication scheme's usage documentation.  OPTIONAL.",
+                                "format":"uri",
+                                "examples": [
+                                    "http://example.com/help/oauth.html"
+                                ]
+                            },
+                            "type": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/type",
+                                "type": "string",
+                                "description": "The authentication scheme.",
+                                "examples": [
+                                    "oauthbearertoken"
+                                ],
+                                "enum": ["oauth","oauth2","oauthbearertoken","httpbasic","httpdigest"]
+                            },
+                            "primary": {
+                                "$id": "#/properties/authenticationSchemes/items/anyOf/0/properties/primary",
+                                "type": "boolean",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    true
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "$id": "#/properties/authenticationSchemes/items"
+            }
+        },
+        "meta": {
+            "$id": "#/properties/meta",
+            "type": "object",
+            "description": "A complex attribute containing resource metadata",
+            "examples": [
+                {
+                    "location": "https://example.com/v2/ServiceProviderConfig",
+                    "resourceType": "ServiceProviderConfig",
+                    "created": "2010-01-23T04:56:22Z",
+                    "lastModified": "2011-05-13T04:42:34Z",
+                    "version": "W/\"3694e05e9dff594\""
+                }
+            ],
+            "required": [],
+            "additionalProperties": true,
+            "properties": {
+                "location": {
+                    "$id": "#/properties/meta/properties/location",
+                    "type": "string",
+                    "description": "The URI of the resource being returned. This value MUST be the same as the \"Content-Location\" HTTP response header (see Section 3.1.4.2 of [RFC7231]).",
+                    "format": "uri",
+                    "examples": [
+                        "https://example.com/v2/ServiceProviderConfig"
+                    ]
+                },
+                "resourceType": {
+                    "$id": "#/properties/meta/properties/resourceType",
+                    "type": "string",
+                    "description": "The name of the resource type of the resource.",
+                    "examples": [
+                        "ServiceProviderConfig"
+                    ],
+                    "enum": ["ServiceProviderConfig"]
+                },
+                "created": {
+                    "$id": "#/properties/meta/properties/created",
+                    "type": "string",
+                    "description": "The \"DateTime\" that the resource was added to the service provider. This attribute MUST be a DateTime.",
+                    "format": "date-time",
+                    "examples": [
+                        "2010-01-23T04:56:22Z"
+                    ]
+                },
+                "lastModified": {
+                    "$id": "#/properties/meta/properties/lastModified",
+                    "type": "string",
+                    "description": "The most recent DateTime that the details of this resource were updated at the service provider",
+                    "format": "date-time",
+                    "examples": [
+                        "2011-05-13T04:42:34Z"
+                    ]
+                },
+                "version": {
+                    "$id": "#/properties/meta/properties/version",
+                    "type": "string",
+                    "description": "The version of the resource being returned.  This value must be the same as the entity-tag (ETag) HTTP response header (see Sections 2.1 and 2.3 of [RFC7232])",
+                    "examples": [
+                        "W/\"3694e05e9dff594\""
+                    ]
+                }
+            }
+        }
+    }
+}

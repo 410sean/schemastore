@@ -1400,6 +1400,11 @@
       "url": "https://json.schemastore.org/sarif-external-property-file-2.1.0-rtm.5.json"
     },
     {
+      "name":"SCIM 2.0 ServiceProviderConfig",
+      "description": "enables a service provider to discover SCIM specification features in a standardized form",
+      "url":"https://json.schemastore.org/SCIM2.0-ServiceProviderConfig.json"
+    },
+    {
       "name": "Schema Catalog",
       "description": "JSON Schema catalog files compatible with SchemaStore.org",
       "url": "https://json.schemastore.org/schema-catalog"
